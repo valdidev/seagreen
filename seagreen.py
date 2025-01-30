@@ -2,5 +2,11 @@ archivo = open("darkslateblue-access.log", "r")
 
 lineas = archivo.readlines()
 
-print(lineas[0])
+for linea in lineas:
+    inicio = linea.find('[')
+    final = linea.find(']')
+    tiempo = linea[inicio+1:final]
+    partes = tiempo.split(':')
+    hora = partes[1]
+    print(hora)
 
