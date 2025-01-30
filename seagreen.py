@@ -13,5 +13,9 @@ for linea in lineas:
         diccionario[hora] = 1
     else:
         diccionario[hora] += 1
-print(diccionario)
+
+horas = sorted(diccionario.keys())
+numero = [diccionario[hora] for hora in horas]
+print(horas)
+print(numero)
 
