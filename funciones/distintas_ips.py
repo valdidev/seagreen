@@ -27,7 +27,9 @@ def distintas_ips(ruta):
     plt.title('Número de accesos por IP')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    nombre_archivo = get_filename_without_extension(ruta, '.png')
+    nombre_archivo = get_filename_without_extension(ruta)
     os.makedirs("graficas", exist_ok=True)
-    plt.savefig("graficas/distintas_ips_" + nombre_archivo)
+    virtual_host = nombre_archivo.split('-')[1]
+    os.makedirs("graficas/" + virtual_host, exist_ok=True)
+    plt.savefig(f"graficas/{virtual_host}/{nombre_archivo}_distintas_ips.png")
     plt.close()
