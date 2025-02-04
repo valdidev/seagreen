@@ -29,7 +29,7 @@ def distintas_ips(ruta):
     plt.tight_layout()
     nombre_archivo = get_filename_without_extension(ruta)
     os.makedirs("graficas", exist_ok=True)
-    virtual_host = nombre_archivo.split('-')[1]
+    virtual_host = nombre_archivo.split('-')[0]
     os.makedirs("graficas/" + virtual_host, exist_ok=True)
     plt.savefig(f"graficas/{virtual_host}/{nombre_archivo}_distintas_ips.png")
     plt.close()
