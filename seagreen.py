@@ -1,4 +1,13 @@
 import matplotlib.pyplot as plt
+import os
+from urllib.parse import urlparse
+
+def get_filename_without_extension(file_url, extension):
+    parsed_url = urlparse(file_url)
+    file_path = parsed_url.path
+    base_name = os.path.basename(file_path)
+    file_name, _ = os.path.splitext(base_name)
+    return file_name + extension
 
 def registros_por_hora(ruta):
     archivo = open(ruta, "r")
@@ -27,6 +36,14 @@ def registros_por_hora(ruta):
     plt.title('Número de accesos por hora')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig("accesos_por_hora.png")
+    
+    nombre_archivo = get_filename_without_extension(ruta, '.png')
+    os.makedirs("graficas", exist_ok=True)
+    plt.savefig("graficas/" + nombre_archivo)
+    
+carpeta = "C:/xampp/htdocs/seagreen"
 
-registros_por_hora("darkslateblue-access.log")
+for root, dirs, files in os.walk(carpeta):
+    for file in files:
+        if file.endswith(".log"):
+            registros_por_hora(file)
