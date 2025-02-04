@@ -16,7 +16,7 @@ def distintas_ips(ruta):
         else:
             diccionario[ip] += 1
     
-    ips_ordenadas = sorted(diccionario.items(), key=lambda x: x[1], reverse=True)
+    ips_ordenadas = sorted(diccionario.items(), key=lambda x: x[1], reverse=True)[:20]
     ips = [item[0] for item in ips_ordenadas]
     numero = [item[1] for item in ips_ordenadas]
     
